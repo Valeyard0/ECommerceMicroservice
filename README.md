@@ -79,7 +79,7 @@ The system supports role-based authorization with `ADMIN` and `USER` roles.
 | DELETE | `/api/v1/products/{productId}` | Delete product | – | ADMIN |
 
 
-## Cart Service(INSIDE OF ORDER SERVICE) – REST APIs
+## Cart Service – REST APIs
 
 | Method | Endpoint | Description | Request Body | Authentication |
 |------|---------|-------------|--------------|----------------|
@@ -97,15 +97,79 @@ The system supports role-based authorization with `ADMIN` and `USER` roles.
 | POST | `/api/v1/order` | Create order from cart | – | Authenticated (JWT) |
 
 
+##  Docker Services & Ports
 
-**POST** `/auth/login`
+| Service Name | Description            | Container Port | Host Port |
+|--------------|------------------------|----------------|-----------|
+| Zookeeper    | Kafka Coordination     | 2181           | 2181      |
+| Kafka        | Message Broker         | 9092           | 9092      |
+
+
+### Example JSON
 ```json
 {
+  "id": 1,
   "username": "string",
-  "password": "string"
+  "email": "string",
+  "password": "string",
+  "roles": [
+    {
+      "id": 1,
+      "name": "ROLE_USER"
+    }
+  ],
+  "addresses": [
+    {
+      "city": "string",
+      "district": "string",
+      "street": "string",
+      "postalCode": "string"
+    }
+  ]
+}
+ Register Request
+Example JSON
+
+{
+  "username": "string",
+  "password": "string",
+  "email": "string",
+  "addresses": [
+    {
+      "city": "string",
+      "district": "string",
+      "street": "string",
+      "postalCode": "string"
+    }
+  ]
+}
+ Product
+Example JSON
+
+{
+  "id": 1,
+  "name": "string",
+  "price": 0,
+  "quantity": 0,
+  "description": "string",
+  "image": "string"
+}
+Cart Request
+Example JSON
+{
+  "productId": 1,
+  "quantity": 1
 }
 
-Success Response:
+Category
 {
-  "token": "string"
+  "id": 1,
+  "name": "ELECTRONICS"
 }
+
+Category Enum
+[
+  "FURNITURE",
+  "ELECTRONICS",
+  "SPORTS"
+]
