@@ -79,7 +79,7 @@ The system supports role-based authorization with `ADMIN` and `USER` roles.
 | DELETE | `/api/v1/products/{productId}` | Delete product | – | ADMIN |
 
 
-## Cart Service – REST APIs
+## Cart Service(INSIDE OF ORDER SERVICE) – REST APIs
 
 | Method | Endpoint | Description | Request Body | Authentication |
 |------|---------|-------------|--------------|----------------|
@@ -95,3 +95,17 @@ The system supports role-based authorization with `ADMIN` and `USER` roles.
 | Method | Endpoint | Description | Request Body | Authentication |
 |------|---------|-------------|--------------|----------------|
 | POST | `/api/v1/order` | Create order from cart | – | Authenticated (JWT) |
+
+
+
+**POST** `/auth/login`
+```json
+{
+  "username": "string",
+  "password": "string"
+}
+
+Success Response:
+{
+  "token": "string"
+}
