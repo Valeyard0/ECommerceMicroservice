@@ -1,6 +1,6 @@
 Spring Boot Microservices Project
 
-A full-featured Spring Boot Microservices project built with modern cloud-native technologies.
+ Spring Boot Microservices project built with modern cloud-native technologies.
 
 
 About The Project
