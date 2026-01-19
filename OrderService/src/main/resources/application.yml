@@ -26,6 +26,9 @@ spring:
         orderCreatedEvents-out-0:
           destination: orderCreatedEvents
           group: product-service-group
+        messageCreatedEvents-out-0:
+          destination: messageCreatedEvents
+          content-type: application/json
 
 server:
   port: 8083

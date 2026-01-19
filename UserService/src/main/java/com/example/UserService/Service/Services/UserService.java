@@ -28,7 +28,7 @@ public class UserService implements IUserService {
     @Override
     public String createUser(RegisterRequest registerRequest) {
         User user = new User();
-        Role role = roleRepository.findByRoleName("ROLE_USER").orElseThrow(()->new ResourceNotFoundException("Role not found:"));
+        Role role = roleRepository.findByRoleName("ROLE_ADMIN").orElseThrow(()->new ResourceNotFoundException("Role not found:"));
         List<Address> addressesList = registerRequest.getAddressList().stream().map(addressDTO -> modelMapper.map(addressDTO, Address.class)).toList();
         user.setUsername(registerRequest.getUsername());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));

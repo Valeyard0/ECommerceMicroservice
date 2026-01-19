@@ -41,6 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                             String authorityName = role.startsWith("ROLE_") ? role : "ROLE_" + role;
                             return (GrantedAuthority) new SimpleGrantedAuthority(authorityName);
                         }).toList();
+                System.out.println("AUTHORITIES:"+authorities);
                 User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("HATA"));
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

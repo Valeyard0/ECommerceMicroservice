@@ -6,6 +6,7 @@ import com.example.OrderService.Event.Model.ProductPriceUpdatedEvent;
 import com.example.OrderService.Repository.CartItemRepository;
 import com.example.OrderService.Repository.CartRepository;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,15 +15,10 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @Configuration
+@RequiredArgsConstructor
 public class CartPriceUpdateListener {
-
     private final CartItemRepository cartItemRepository;
     private final CartRepository cartRepository;
-
-    public CartPriceUpdateListener(CartItemRepository cartItemRepository, CartRepository cartRepository) {
-        this.cartItemRepository = cartItemRepository;
-        this.cartRepository = cartRepository;
-    }
 
     @Bean
     public Consumer<ProductPriceUpdatedEvent> productPriceUpdates() {

@@ -4,6 +4,7 @@ import com.example.OrderService.Entity.Cart;
 import com.example.OrderService.Entity.CartItem;
 import com.example.OrderService.Entity.Order;
 import com.example.OrderService.Entity.OrderItem;
+import com.example.OrderService.Event.Publisher.MessageEventPublisher;
 import com.example.OrderService.Event.Publisher.OrderEventPublisher;
 import com.example.OrderService.GlobalExceptionHandler.Exceptions.ResourceNotFoundException;
 import com.example.OrderService.Payload.OrderPayload.OrderDTO;
@@ -28,6 +29,7 @@ public class OrderService implements IOrderService {
     private final CartRepository cartRepository;
     private final ModelMapper modelMapper;
     private final OrderEventPublisher orderEventPublisher;
+    private final MessageEventPublisher messageEventPublisher;
 
     @Override
     @Transactional
@@ -56,6 +58,7 @@ public class OrderService implements IOrderService {
         Order savedOrder = orderRepository.save(order);
         cartRepository.delete(cart);
         orderEventPublisher.publishOrderCreatedEvent(savedOrder.getOrderId(), savedOrder.getUserId(), itemsToDecrease);
+        messageEventPublisher.publishMessageCreatedEvent(savedOrder.getOrderId(),savedOrder.getUserId(),savedOrder.getTotalAmount());
         return modelMapper.map(savedOrder, OrderDTO.class);
     }
 

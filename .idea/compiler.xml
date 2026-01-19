@@ -10,13 +10,14 @@
         <module name="APIGateway" />
         <module name="UserService" />
         <module name="ProductService" />
+        <module name="MessageService" />
         <module name="EurekaService" />
       </profile>
       <profile name="Annotation profile for OrderService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath>
+        <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="OrderService" />
@@ -29,6 +30,7 @@
       <module name="APIGateway" options="-parameters" />
       <module name="AuthService" options="-parameters" />
       <module name="EurekaService" options="-parameters" />
+      <module name="MessageService" options="-parameters" />
       <module name="OrderService" options="-parameters" />
       <module name="ProductService" options="-parameters" />
       <module name="UserService" options="-parameters" />

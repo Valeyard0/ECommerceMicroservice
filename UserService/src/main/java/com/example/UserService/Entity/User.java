@@ -21,7 +21,6 @@ import java.util.*;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
